@@ -5,7 +5,7 @@ from sklearn.metrics import mean_absolute_error, r2_score
 import matplotlib.pyplot as plt
 import pickle
 # Load dataset
-df = pd.read_csv("MATPLOTdata.csv")
+df = pd.read_csv("dataset.csv")
 df["length"] = df["password"].apply(len)
 # Features (inputs)
 X = df[["length", "size"]]
