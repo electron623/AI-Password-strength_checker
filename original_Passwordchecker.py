@@ -252,75 +252,56 @@ y_ent= (1/(sigma_entro * np.sqrt(2 * np.pi))) * np.exp(-(x_ent - mu_entro)**2 / 
 # Get corresponding y value on curve
 y_uent = (1/(sigma_entro * np.sqrt(2 * np.pi))) * np.exp(-(entropy - mu_entro)**2 / (2 * sigma_entro**2))
 
-
-# Plot
-plt.figure()
-plt.plot(x_ent, y_ent, color='black')
-plt.scatter(entropy, y_uent, marker='x', s=120) 
-plt.xlabel("Entropy")
-plt.ylabel("Density")
-plt.show()
-
-plt.figure()
-plt.hexbin(df["size"], df["entropy"], gridsize=25, cmap='Greys')
-
-# overlay actual points
-
-plt.colorbar(label="Density",)
-plt.scatter(size, entropy, marker='x', s=120)
-
-plt.xlabel("Password Length")
-plt.ylabel("Entropy")
-plt.title("Entropy vs Length ")
-
-plt.show()
-#Strength vs Entropy (Scatter Plot)
-plt.figure()
-
-# dataset points
-plt.scatter(df["strength"], df["entropy"])
-
-# YOUR password (highlighted)
-plt.scatter(strength, entropy, marker='x', s=100)
-
-plt.xlabel("Strength")
-plt.ylabel("Entropy")
-plt.title("Strength vs Entropy (Your Password Highlighted)")
-plt.show()
-
-
-# Entropy Distribution (Histogram)
-plt.figure()
-
-plt.hist(df["entropy"])
-
-# vertical line for your password
-plt.axvline(entropy)
-
-plt.xlabel("Entropy")
-plt.ylabel("Frequency")
-plt.title("Entropy Distribution (Your Password Position)")
-plt.show()
-
-# Strength Distribution (Histogram)
-plt.figure()
-
-plt.hist(df["strength"])
-
-# vertical line for your password
-plt.axvline(strength)
-
-plt.xlabel("Strength")
-plt.ylabel("Frequency")
-plt.title("Strength Distribution (Your Password Position)")
-plt.show()
-# LENGHT vs STRENGTH
-plt.figure()
-df["length"] = df["password"].apply(len)
-plt.bar(df["length"], df["strength"])
-plt.scatter(len(psswd), strength, marker='x', s=100)
-plt.xlabel("Password Length")
-plt.ylabel("Strength")
-plt.title("Strength vs Length")
-
-plt.show()
+while True:
+   i = int (input("Select graph:"))
+   if i == 1:
+    plt.figure()
+    plt.plot(x_ent, y_ent, color='black')
+    plt.scatter(entropy, y_uent, marker='x', s=120) 
+    plt.xlabel("Entropy")
+    plt.ylabel("Density")
+    plt.show()
+   if i==2:
+      plt.figure()
+      plt.hexbin(df["size"], df["entropy"], gridsize=25, cmap='Greys')
+      plt.colorbar(label="Density",)
+      plt.scatter(size, entropy, marker='x', s=120)
+      plt.xlabel("Password Length")
+      plt.ylabel("Entropy")
+      plt.title("Entropy vs Length ")
+      plt.show()
+   if i==3:
+      plt.figure()
+      plt.scatter(df["strength"], df["entropy"])
+      plt.scatter(strength, entropy, marker='x', s=100)
+      plt.xlabel("Strength")
+      plt.ylabel("Entropy")
+      plt.title("Strength vs Entropy (Your Password Highlighted)")
+      plt.show()
+   if i==4:
+      plt.figure()
+      plt.hist(df["entropy"])
+      plt.axvline(entropy)
+      plt.xlabel("Entropy")
+      plt.ylabel("Frequency")
+      plt.title("Entropy Distribution (Your Password Position)")
+      plt.show()
+   if i == 5:
+      plt.figure()
+      plt.hist(df["strength"])
+      plt.axvline(strength)
+      plt.xlabel("Strength")
+      plt.ylabel("Frequency")
+      plt.title("Strength Distribution (Your Password Position)")
+      plt.show()
+   if i==6:
+      plt.figure()
+      df["length"] = df["password"].apply(len)
+      plt.bar(df["length"], df["strength"])
+      plt.scatter(len(psswd), strength, marker='x', s=100)
+      plt.xlabel("Password Length")
+      plt.ylabel("Strength")
+      plt.title("Strength vs Length")
+      plt.show()
+   if i==0:
+      break
